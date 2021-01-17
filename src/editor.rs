@@ -52,5 +52,6 @@ fn read_key() -> Result<Key, std::io::Error> {
 }
 
 fn die(e: std::io::Error) {
+  print!("{}", termion::clear::All);
   panic!(e);
 }
