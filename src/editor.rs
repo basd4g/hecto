@@ -35,7 +35,7 @@ impl Editor {
     Ok(())
   }
   fn refresh_screen(&self) -> Result<(), std::io::Error> {
-    print!("\x1b[2J");
+    print!("{}", termion::clear::All);
     io::stdout().flush()
   }
 }
