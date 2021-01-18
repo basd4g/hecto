@@ -37,7 +37,7 @@ impl Editor {
       should_quit: false,
       terminal: Terminal::default().expect("Failed to initialize terminal"),
       cursor_position: Position::default(),
-      document: Document::default(),
+      document: Document::open(),
     }
   }
   fn process_keypress(&mut self) -> Result<(), std::io::Error> {
