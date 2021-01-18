@@ -4,6 +4,7 @@ use termion::event::Key;
 
 const VERSION: &str = env!("CARGO_PKG_VERSION");
 
+#[derive(Default)]
 pub struct Position {
   pub x: usize,
   pub y: usize,
@@ -35,7 +36,7 @@ impl Editor {
     Self{
       should_quit: false,
       terminal: Terminal::default().expect("Failed to initialize terminal"),
-      cursor_position: Position { x: 0, y: 0 },
+      cursor_position: Position::default(),
       document: Document::default(),
     }
   }
@@ -86,10 +87,10 @@ impl Editor {
     Terminal::cursor_position(&self.cursor_position);
     if self.should_quit {
       Terminal::clear_screen();
-      Terminal::cursor_position(&Position { x: 0, y: 0 });
+      Terminal::cursor_position(&Position::default());
       println!("Goodbye. \r");
     } else {
-      Terminal::cursor_position(&Position { x: 0, y: 0 });
+      Terminal::cursor_position(&Position::default());
       self.draw_rows();
       Terminal::cursor_position(&self.cursor_position);
     }
