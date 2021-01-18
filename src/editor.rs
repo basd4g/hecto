@@ -83,8 +83,10 @@ impl Editor {
     Terminal::cursor_position(&self.cursor_position);
     if self.should_quit {
       Terminal::clear_screen();
+      Terminal::cursor_position(&Position { x: 0, y: 0 });
       println!("Goodbye. \r");
     } else {
+      Terminal::cursor_position(&Position { x: 0, y: 0 });
       self.draw_rows();
       Terminal::cursor_position(&self.cursor_position);
     }
